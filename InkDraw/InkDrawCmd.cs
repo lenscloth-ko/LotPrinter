@@ -17,7 +17,7 @@ namespace InkDraw
     /// </summary>
     public class InkDrawCmd
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         #region 설정
         /// <summary>
@@ -113,6 +113,17 @@ namespace InkDraw
         /// <param name="port">프린터에 달려있는 InkDraw S/W가 설치된 PC의 Port정보, InkDraw > File -> Preferences-> Network 에서 설정</param>
         public InkDrawCmd(string ip, int port)
         {
+            logger.Trace("Sample trace message");
+            logger.Debug("Sample debug message");
+            logger.Info("Sample informational message");
+            logger.Warn("Sample warning message");
+            logger.Error("Sample error message");
+            logger.Fatal("Sample fatal error message");
+
+            // alternatively you can call the Log() method
+            // and pass log level as the parameter.
+            logger.Log(LogLevel.Info, "Sample informational message");
+
             _inkDrawIP = ip;
             _inkDrawPort = port;
             ConnectInkdraw();
@@ -127,16 +138,14 @@ namespace InkDraw
             {
                 tc = new TcpClient(_inkDrawIP, _inkDrawPort);
                 isConnected = true;
-                logger.Info("your log text");
                 //logger.Log(LogLevel.Info, "start");
             }
             catch (Exception ex)
             {
                 isConnected = false;
                 //logger.Log(LogLevel.Error, ex.Message);
-                
+                logger.Error(ex, ex.Message);
                 throw new ArgumentException(ex.Message, "ip, port");
-                logger.Fatal("Exception occurred in Page_Load. : " + ex.Message + ";" + ex.Source);
             }
         } // end ConnectInkdraw()
 
@@ -220,7 +229,6 @@ namespace InkDraw
             //                        .CreateLogger())
             //{
             //}
-            logger.Info("your log text");
             byte[] buff = Encoding.ASCII.GetBytes(cmd);
 
             // (1) 스트림에 바이트 데이타 전송
