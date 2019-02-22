@@ -1,4 +1,7 @@
-﻿using System;
+﻿//using NLog;
+//using Serilog;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -14,6 +17,8 @@ namespace InkDraw
     /// </summary>
     public class InkDrawCmd
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         #region 설정
         /// <summary>
         /// 프린터에 달려있는 InkDraw S/W가 설치된 PC의 IP정보
@@ -36,6 +41,9 @@ namespace InkDraw
         /// 현재 연결성공 여부
         /// </summary>
         private bool isConnected = false;
+
+        //Logger logger = LogManager.GetCurrentClassLogger();
+        
         #endregion
 
         #region 요소정보
@@ -107,7 +115,6 @@ namespace InkDraw
         {
             _inkDrawIP = ip;
             _inkDrawPort = port;
-
             ConnectInkdraw();
         } // end InkDrawCmd(string ip, int port)
 
@@ -120,11 +127,16 @@ namespace InkDraw
             {
                 tc = new TcpClient(_inkDrawIP, _inkDrawPort);
                 isConnected = true;
+                logger.Info("your log text");
+                //logger.Log(LogLevel.Info, "start");
             }
             catch (Exception ex)
             {
                 isConnected = false;
+                //logger.Log(LogLevel.Error, ex.Message);
+                
                 throw new ArgumentException(ex.Message, "ip, port");
+                logger.Fatal("Exception occurred in Page_Load. : " + ex.Message + ";" + ex.Source);
             }
         } // end ConnectInkdraw()
 
@@ -203,6 +215,12 @@ namespace InkDraw
         /// <returns></returns>
         private string CallCommandStream(string cmd, NetworkStream ns)
         {
+            //using (var log = new LoggerConfiguration()
+            //            .WriteTo.Console()
+            //                        .CreateLogger())
+            //{
+            //}
+            logger.Info("your log text");
             byte[] buff = Encoding.ASCII.GetBytes(cmd);
 
             // (1) 스트림에 바이트 데이타 전송
@@ -227,7 +245,9 @@ namespace InkDraw
                 errorCode = output;
             }
 
-            Console.WriteLine(errorCode);
+            //logger.Log(LogLevel.Info, errorCode);
+
+            //Console.WriteLine(errorCode);
 
             return errorCode;
         } // end CallCommandStream(string cmd)
