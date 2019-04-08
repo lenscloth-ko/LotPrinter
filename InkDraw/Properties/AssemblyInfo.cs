@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 어셈블리에 대한 일반 정보는 다음 특성 집합을 통해 
 // 제어됩니다. 어셈블리와 관련된 정보를 수정하려면
 // 이러한 특성 값을 변경하세요.
-[assembly: AssemblyTitle("InkDraw")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("InkDraw Remote Communication Program")]
+[assembly: AssemblyDescription("LG화학 익산 지대마킹기 InkDraw연결 프로그램")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("InkDraw")]
+[assembly: AssemblyCompany("LG화학")]
+[assembly: AssemblyProduct("InkDraw 1.13.148 ")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -34,3 +34,8 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+//// 프로그램 내 한번만 지정
+//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
+
