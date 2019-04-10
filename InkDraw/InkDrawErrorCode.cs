@@ -24,6 +24,27 @@ namespace InkDraw
             initTable();
         } // end InkDrawErrorCode()
 
+
+        /// <summary>
+        /// 에러 코드 전체 조회
+        /// </summary>
+        /// <returns></returns>
+        public string ErrorMessage()
+        {
+            DataRow[] rows;
+            StringBuilder sb = new StringBuilder();
+            rows = this.errorCodesTable.Select(
+                "Code <> ''"
+                );
+
+            foreach (var item in rows)
+            {
+                sb.AppendFormat("{0} : {1}\r\n", item["Code"].ToString(), item["Message"].ToString());
+            }
+
+            return sb.ToString();
+        }
+        
         /// <summary>
         /// 에러 코드의 내용 확인
         /// </summary>
