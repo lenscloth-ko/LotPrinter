@@ -53,9 +53,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CoLOS\CoLOS.csproj">
+      <Project>{775014cb-b388-4cea-ac1e-8df99d89518e}</Project>
+      <Name>CoLOS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InkDraw\InkDraw.csproj">
       <Project>{0DF7C78D-26FE-4FE6-B6E8-1709C53E8917}</Project>
       <Name>InkDraw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yeacode\Yeacode.csproj">
+      <Project>{85a3df00-a0cd-4126-b3e9-ad88d5fd0681}</Project>
+      <Name>Yeacode</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

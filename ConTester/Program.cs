@@ -37,27 +37,34 @@ namespace ConTester
             //}
             #endregion
 
-            string DBPath = @"C:\Inkdraw\Logfile\printlog_test.mdb";
-            string sqlString = @"select ID, Timestamp, CB, File, Datafile, Record from printlog";
+            #region InkDraw 로그저장테스트
+            //string DBPath = @"C:\Inkdraw\Logfile\printlog_test.mdb";
+            //string sqlString = @"select ID, Timestamp, CB, File, Datafile, Record from printlog";
 
-            InkDrawPrintLog plog = new InkDrawPrintLog();
-            DataSet ds = plog.GetPrintLog(sqlString, DBPath);
+            //InkDrawPrintLog plog = new InkDrawPrintLog();
+            //DataSet ds = plog.GetPrintLog(sqlString, DBPath);
 
-            //Console.WriteLine(ds.Tables[0].Rows.Count);
-            Console.WriteLine("InkDraw print log DataTable");
-            Console.WriteLine("|ID|\t|Timestamp|\t|CB|\t|File|\t|Datafile|\t|Record|");
+            ////Console.WriteLine(ds.Tables[0].Rows.Count);
+            //Console.WriteLine("InkDraw print log DataTable");
+            //Console.WriteLine("|ID|\t|Timestamp|\t|CB|\t|File|\t|Datafile|\t|Record|");
 
-            foreach (DataRow row in ds.Tables[0].Rows)
-            {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}"
-                    , row[0] // ID
-                    , row[1] // Timestamp
-                    , row[2] // CB
-                    , row[3].ToString().Substring(0,10) // File
-                    , row[4] // Datafile
-                    , row[5] // Record
-                );
-            }
+            //foreach (DataRow row in ds.Tables[0].Rows)
+            //{
+            //    Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}\t{5}"
+            //        , row["ID"] // ID
+            //        , row["Timestamp"] // Timestamp
+            //        , row["CB"] // CB
+            //        , row["File"].ToString().Substring(0, 10) // File
+            //        , row["Datafile"] // Datafile
+            //        , row["Record"] // Record
+            //    );
+            //} // end foreach
+            #endregion
+
+            #region CoLOS 정보전달
+
+            #endregion
+
 
         } // end Main(string[] args)
 
